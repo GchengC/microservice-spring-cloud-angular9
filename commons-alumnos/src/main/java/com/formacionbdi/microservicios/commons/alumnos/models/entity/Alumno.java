@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author GchengC.
@@ -32,4 +33,17 @@ public class Alumno {
     public void prepersist() {
         this.createAt = new Date();
     }
+
+    /**
+     * Adecuacion para buscar POR ID en el objeto Alumno, cuando sean iguales
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Alumno)) return false;
+        Alumno alumno = (Alumno) o;
+        return this.id != null && this.id.equals(alumno.getId());
+    }
+
 }
