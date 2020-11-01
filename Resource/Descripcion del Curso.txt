@@ -1,0 +1,80 @@
+https://www.udemy.com/course/microservicios-spring-cloud-y-angular-9/
+
+Lo que aprenderás
+-Construye, implementa y escala microservicios con Spring Boot 2 y Spring Cloud
+-Aprende a crear y consumir servicios web RESTful con Spring Boot
+-Conecta y consume otros microservicios utilizando cliente HTTP
+-Implementa Balanceo de carga del lado del cliente con Spring Cloud Load Balancer
+-Implementa el registro y el escalamiento con el servidor Eureka y Spring Cloud Gateway
+-Desarrolla aplicaciones web full-stack con Angular 9 (frontend) y Microservicios con Spring Cloud (backend)
+-Aprende sobre componentes, directivas, rutas, pipes y servicios de una aplicación Angular
+-Aprende a implementar paginación de resultado con Angular y Spring Microservicios
+-Aprende a implementar uploads de archivos con Angular y Spring Microservicios
+-Integra y aprende a trabajar con MongoDB en Spring Microservicios
+-Angular Material (Paginator, DataTable, Autocomplete, Ventanas Modal, Tabs, Card y Paneles, Acordeón, Checkboxes)
+-Aprende a implementar diferentes patrones de base de datos en Microservicios, BBDD compartida y por microservicios
+-Aprende en Angular como llenar listas select desplegables y dependientes
+-Aprende a escribir clases comunes (commons) con Generics en TypeScript
+
+Requisitos
+-Conocimientos de Java SE y programación orientada a objetos
+-Conocimientos de Spring Framework
+-Conocimientos de Bases de Datos y SQL
+
+
+Descripción
+Bienvenido al curso de Microservicios con Spring Cloud y Angular 10, primero por el lado del backend aprenderás línea a
+línea y desde cero como construir un arquitectura de microservicios con Spring Boot 2 y Spring Cloud, desde los conceptos
+más básicos hasta un completo ecosistema de servicios interconectados mediante el registro y escalamiento con Eureka
+(servidor de nombre) y como puerta de enlace Spring Cloud Gateway y Zuul, implementando balanceo de carga con Spring Cloud
+Load Balancer, también aprenderemos a trabajar con diferentes patrones de base de datos y persistencia en microservicios con
+BBDD compartida y con BBDD por microservicios y relaciones con integridad referencial (foreign key) entre las tablas y
+relaciones distribuidas, usaremos bases de datos MySQL 8, PostgreSQL y NoSQL con MongoDB.
+
+Luego por el lado del frontend angular aprenderás desde cero a desarrollar aplicaciones web de una sola página (SPA),
+desde los conceptos más básicos de Angular como TypeScript, Angular CLI, ReactiveX (RxJs), Operadores RX, Componentes,
+Angular Material, Listas select desplegables y dependientes, Tipos Generics en TypeScript, Observable, Pipe, Directivas,
+servicios y mucho más, hasta un completo sistema conectado a los endpoints de nuestros microservicios mediante API Rest
+para implementar CRUD y diferentes operaciones/consultas con relaciones a varias tablas, Hibernate/JPA, paginación,
+subida de archivos, manejo de errores, validación de formulario y más.
+
+Este curso es completamente funcional en Angular 9 y 10, pero también compatibles para las versiones anteriores de
+Angular 2, 4, 5, 6, 7 y 8.
+
+Durante el curso también trabajaremos con varios componentes del ecosistema de Spring como IoC, Spring MVC, RestController,
+Servicios Web RESTful, cliente HTTP con Feing, Spring Data JPA e Hibernate para la persistencia y CRUD (crear, leer,
+actualizar y eliminar), Upload de archivos, entre otros temas más.
+
+¿Porqué elegir nuestros cursos?
+
+Acceso 7 x 24 a nuestra Plataforma e-learning.
+
+Soporte online con profesor Java
+
+Al finalizar recibes un certificado digital
+
+Somos pioneros en brindarte este tipo de acceso para darte la libertad que necesitas para estudiar, donde quiera que te
+encuentres.
+
+Excelente relación calidad-precio.
+
+Conocimiento aplicable a proyectos reales del mercado laboral.
+
+Atención rápida y satisfactoria a las dudas por parte del profesor.
+
+Interactividad del curso ya que contiene foros y comunicación para resolver dudas.
+
+Todos los materiales del curso están en español y al finalizar recibes un diploma UDEMY digital certificando tu aprobación
+con validez internacional y LinkedIn.
+
+Si quieres ser un desarrollador de arquitecturas de microservicios con Spring Boot 2 y Spring Cloud y avanzar al siguiente
+nivel, es casi obligatorio este curso, te invito a que te inscribas, nos vemos adentro.
+
+¿Para quién es este curso?
+-Personas que estudian informática y/o ingeniería que estén estudiando o han estudiado Java y spring
+-Desarrolladores apasionados de las nuevas tecnologías que dominan Java
+-Desarrolladores apasionados de las nuevas tecnologías con una base en Spring
+-Personas interesadas en el desarrollo backend con microservicios que dominan Java
+-Personas que dominan Spring y quieran introducirse en el desarrollo de aplicaciones web full-stack con Angular
+-Personas que dominan Spring y quieran introducirse en la arquitectura de microservicios
+-Personas interesadas en el desarrollo front-end que dominan Java
