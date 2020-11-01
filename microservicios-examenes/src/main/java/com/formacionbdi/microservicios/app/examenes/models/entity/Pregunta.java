@@ -1,5 +1,6 @@
 package com.formacionbdi.microservicios.app.examenes.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,5 +21,10 @@ public class Pregunta {
     private Long id;
 
     private String texto;
+
+    @JsonIgnoreProperties(value = {"preguntas"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "examen_id")
+    private Examen examen;
 
 }
