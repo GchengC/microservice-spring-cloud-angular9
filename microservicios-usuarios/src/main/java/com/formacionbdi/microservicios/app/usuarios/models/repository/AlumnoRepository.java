@@ -1,7 +1,10 @@
 package com.formacionbdi.microservicios.app.usuarios.models.repository;
 
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 /**
  * @author GchengC.
@@ -10,4 +13,7 @@ import org.springframework.data.repository.CrudRepository;
  * @since nov. 2020.
  **/
 public interface AlumnoRepository extends CrudRepository<Alumno, Long> {
+
+    @Query("SELECT a FROM Alumno a WHERE a.nombre LIKE %?1% OR a.apellido LIKE %?1%")
+    public List<Alumno> findByNombreOrApellido(String term);
 }
