@@ -6,10 +6,7 @@ import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.controllers.CommonController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -58,6 +55,11 @@ public class CursoController extends CommonController<Curso, CursoService> {
         cursoDB.removeAlumno(alumno);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(cursoDB));
+    }
+
+    @GetMapping("/alumno/{id}")
+    public ResponseEntity<?> filtrar(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findCursoByAlumnoId(id));
     }
 
 }

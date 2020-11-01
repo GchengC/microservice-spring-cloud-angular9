@@ -24,12 +24,12 @@ public class Curso {
     private Long id;
     private String nombre;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Alumno> alumnos;
-
     @Column(name = "create_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createAt;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Alumno> alumnos;
 
     @PrePersist
     public void prePersist() {
