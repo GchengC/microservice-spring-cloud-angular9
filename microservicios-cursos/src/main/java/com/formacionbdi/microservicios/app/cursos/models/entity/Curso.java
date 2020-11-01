@@ -1,9 +1,11 @@
 package com.formacionbdi.microservicios.app.cursos.models.entity;
 
+import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author GchengC.

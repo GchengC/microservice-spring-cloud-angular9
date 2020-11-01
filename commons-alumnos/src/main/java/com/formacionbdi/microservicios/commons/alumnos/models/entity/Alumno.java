@@ -1,4 +1,4 @@
-package com.formacionbdi.microservicios.app.usuarios.models.entity;
+package com.formacionbdi.microservicios.commons.alumnos.models.entity;
 
 import lombok.Data;
 
