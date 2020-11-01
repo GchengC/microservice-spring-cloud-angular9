@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,13 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
 
         Examen examenDB = o.get();
         examenDB.setNombre(examen.getNombre());
+
+        examenDB.getPreguntas()
+                .stream()
+                .filter(f -> !examen.getPreguntas().contains(f))
+                .forEach(examenDB::removePregunta);
+
+        examenDB.setPreguntas(examen.getPreguntas());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(examenDB));
     }
