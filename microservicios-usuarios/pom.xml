@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.formacionbdi.microservicios.app.usuarios</groupId>
-    <artifactId>microservicio-usuarios</artifactId>
+    <artifactId>microservicios-usuarios</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>microservicio-usuarios</name>
+    <name>microservicios-usuarios</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
