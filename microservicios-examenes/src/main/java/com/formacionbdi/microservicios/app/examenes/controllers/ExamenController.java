@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author GchengC.
@@ -31,41 +31,26 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
         if (!o.isPresent())
             return ResponseEntity.notFound().build();
 
-        Examen examenDB = o.get();
-        examenDB.setNombre(examen.getNombre());
+        Examen examenDb = o.get();
+        examenDb.setNombre(examen.getNombre());
 
-        examenDB.getPreguntas()
+//        examenDB.getPreguntas()
+//                .stream()
+//                .filter(f -> !examen.getPreguntas().contains(f))
+//                .forEach(examenDB::removePregunta);
+//
+//        examenDB.setPreguntas(examen.getPreguntas());
+
+        List<Pregunta> eliminadas = examenDb.getPreguntas()
                 .stream()
-                .filter(f -> !examen.getPreguntas().contains(f))
-                .forEach(examenDB::removePregunta);
+                .filter(pdb -> !examen.getPreguntas().contains(pdb))
+                .collect(Collectors.toList());
 
-        examenDB.setPreguntas(examen.getPreguntas());
+        eliminadas.forEach(examenDb::removePregunta);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(examenDB));
-    }
+        examenDb.setPreguntas(examen.getPreguntas());
 
-    @PutMapping("/{id}/asignar-preguntas")
-    public ResponseEntity<?> asignarAlumnos(@RequestBody List<Pregunta> preguntas, @PathVariable Long id) {
-        Optional<Examen> o = this.service.findById(id);
-        if (!o.isPresent())
-            return ResponseEntity.notFound().build();
-
-        Examen examenDB = o.get();
-        preguntas.forEach(examenDB::addPreguntas);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(examenDB));
-    }
-
-    @PutMapping("/{id}/eliminar-pregunta")
-    public ResponseEntity<?> eliminarAlumno(@RequestBody Pregunta pregunta, @PathVariable Long id) {
-        Optional<Examen> o = this.service.findById(id);
-        if (!o.isPresent())
-            return ResponseEntity.notFound().build();
-
-        Examen examenDB = o.get();
-        examenDB.removePregunta(pregunta);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(examenDB));
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(examenDb));
     }
 
 }

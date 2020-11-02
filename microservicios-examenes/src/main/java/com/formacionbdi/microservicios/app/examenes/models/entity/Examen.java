@@ -44,10 +44,10 @@ public class Examen {
 
     public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas.clear();
-        preguntas.forEach(this::addPreguntas);
+        preguntas.forEach(this::addPregunta);
     }
 
-    public void addPreguntas(Pregunta pregunta) {
+    public void addPregunta(Pregunta pregunta) {
         this.preguntas.add(pregunta);
         pregunta.setExamen(this);
     }
