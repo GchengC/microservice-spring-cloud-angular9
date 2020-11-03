@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,4 +31,8 @@ public class Asignatura {
     @JsonIgnoreProperties(value = {"padre"}, allowSetters = true)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "padre", cascade = CascadeType.ALL)
     private List<Asignatura> hijos;
+
+    public Asignatura() {
+        this.hijos = new ArrayList<>();
+    }
 }
