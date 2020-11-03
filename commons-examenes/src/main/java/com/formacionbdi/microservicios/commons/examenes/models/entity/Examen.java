@@ -33,6 +33,9 @@ public class Examen {
     @OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pregunta> preguntas;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Asignatura asignatura;
+
     @PrePersist
     public void prePersist() {
         this.createAt = new Date();
