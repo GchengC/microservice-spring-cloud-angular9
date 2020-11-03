@@ -1,9 +1,9 @@
 package com.formacionbdi.microservicios.app.examenes.controllers;
 
-import com.formacionbdi.microservicios.app.examenes.models.entity.Examen;
-import com.formacionbdi.microservicios.app.examenes.models.entity.Pregunta;
 import com.formacionbdi.microservicios.app.examenes.services.ExamenService;
 import com.formacionbdi.microservicios.commons.controllers.CommonController;
+import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
+import com.formacionbdi.microservicios.commons.examenes.models.entity.Pregunta;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
