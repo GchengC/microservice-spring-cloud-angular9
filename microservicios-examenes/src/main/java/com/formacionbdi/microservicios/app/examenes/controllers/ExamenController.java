@@ -6,10 +6,7 @@ import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import com.formacionbdi.microservicios.commons.examenes.models.entity.Pregunta;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +48,11 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
         examenDb.setPreguntas(examen.getPreguntas());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(examenDb));
+    }
+
+    @GetMapping("/filtrar/{term}")
+    public ResponseEntity<?> filtrar(@PathVariable String term) {
+        return ResponseEntity.ok(service.findByNombre(term));
     }
 
 }
