@@ -1,6 +1,7 @@
 package com.formacionbdi.microservicios.app.cursos.models.entity;
 
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
+import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -31,6 +32,9 @@ public class Curso {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Alumno> alumnos;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Examen> examenes;
+
     @PrePersist
     public void prePersist() {
         this.createAt = new Date();
@@ -46,6 +50,24 @@ public class Curso {
 
     public void removeAlumno(Alumno alumno) {
         this.alumnos.remove(alumno);
+    }
+
+    public void addExamen(Examen examen) {
+        this.examenes.add(examen);
+    }
+
+    public void removeExamen(Examen examen) {
+        this.examenes.remove(examen);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Examen)) return false;
+        Examen examen = (Examen) o;
+        return this.id != null && this.id.equals(examen.getId());
     }
 
 }
