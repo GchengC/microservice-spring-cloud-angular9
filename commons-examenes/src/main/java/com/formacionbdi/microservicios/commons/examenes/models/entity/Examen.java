@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,7 @@ public class Examen {
     private Long id;
 
     @NotEmpty
+    @Size(min = 4, max = 30)
     private String nombre;
 
     @Column(name = "create_at")
