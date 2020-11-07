@@ -3,6 +3,7 @@ package com.formacionbdi.microservicios.app.usuarios.models.repository;
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
@@ -12,7 +13,8 @@ import java.util.List;
  * @IDE IntelliJ IDEA
  * @since nov. 2020.
  **/
-public interface AlumnoRepository extends CrudRepository<Alumno, Long> {
+//public interface AlumnoRepository extends CrudRepository<Alumno, Long> { //Hasta el video 46 lo usamos, se cambia por tema de paginacion
+public interface AlumnoRepository extends PagingAndSortingRepository<Alumno, Long> {
 
     @Query("SELECT a FROM Alumno a WHERE a.nombre LIKE %?1% OR a.apellido LIKE %?1%")
     public List<Alumno> findByNombreOrApellido(String term);
