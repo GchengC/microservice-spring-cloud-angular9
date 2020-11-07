@@ -5,6 +5,7 @@ import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,8 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
     private String nombre;
 
     @Column(name = "create_at")

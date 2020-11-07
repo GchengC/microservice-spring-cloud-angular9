@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,7 @@ public class Examen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String nombre;
 
     @Column(name = "create_at")
@@ -34,6 +37,7 @@ public class Examen {
     private List<Pregunta> preguntas;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
     private Asignatura asignatura;
 
     @PrePersist

@@ -6,8 +6,10 @@ import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import com.formacionbdi.microservicios.commons.examenes.models.entity.Pregunta;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,7 +24,10 @@ import java.util.stream.Collectors;
 public class ExamenController extends CommonController<Examen, ExamenService> {
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> editar(@RequestBody Examen examen, @PathVariable Long id) {
+    public ResponseEntity<?> editar(@Valid @RequestBody Examen examen, BindingResult result, @PathVariable Long id) {
+        if (result.hasErrors())
+            return this.validar(result);
+
         Optional<Examen> o = this.service.findById(id);
 
         if (!o.isPresent())
