@@ -1,5 +1,6 @@
 package com.formacionbdi.microservicios.commons.alumnos.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -35,6 +36,10 @@ public class Alumno {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createAt;
 
+    @Lob
+    @JsonIgnore
+    private byte[] foto;
+
     @PrePersist
     public void prepersist() {
         this.createAt = new Date();
@@ -50,6 +55,10 @@ public class Alumno {
         if (!(o instanceof Alumno)) return false;
         Alumno alumno = (Alumno) o;
         return this.id != null && this.id.equals(alumno.getId());
+    }
+
+    public Integer getFotoHasCode() {
+        return this.foto != null ? this.foto.hashCode() : null;
     }
 
 }
