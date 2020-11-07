@@ -53,7 +53,7 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
     }
 
     @PutMapping("/editar-con-foto/{id}")
-    public ResponseEntity<?> editarConFoto(@Valid Alumno alumno, BindingResult result, @RequestParam MultipartFile archivo) throws IOException {
+    public ResponseEntity<?> editarConFoto(@Valid Alumno alumno, BindingResult result, @PathVariable Long id, @RequestParam MultipartFile archivo) throws IOException {
         if (result.hasErrors())
             return this.validar(result);
 
