@@ -48,7 +48,7 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
     @PostMapping("/crear-con-foto")
     public ResponseEntity<?> crearConFoto(@Valid Alumno alumno, BindingResult result, @RequestParam MultipartFile archivo) throws IOException {
-        if (archivo.isEmpty()) alumno.setFoto(archivo.getBytes());
+        if (!archivo.isEmpty()) alumno.setFoto(archivo.getBytes());
         return super.crear(alumno, result);
     }
 
@@ -66,7 +66,7 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
         alumnoDB.setNombre(alumno.getNombre());
         alumnoDB.setApellido(alumno.getApellido());
         alumnoDB.setEmail(alumno.getEmail());
-        if (archivo.isEmpty()) alumnoDB.setFoto(archivo.getBytes());
+        if (!archivo.isEmpty()) alumnoDB.setFoto(archivo.getBytes());
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(alumnoDB));
     }
 
