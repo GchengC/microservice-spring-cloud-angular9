@@ -26,12 +26,16 @@ public class RespuestaController {
     }
 
     @GetMapping("/alumno/{alumnoId}/examen/{examenId}")
-    public ResponseEntity<?> obtenerRespuestaPorAlumnoPorExamen(
-            @PathVariable Long alumnoId,
-            @PathVariable Long examenId,
-            @RequestBody Iterable<Respuesta> respuestas) {
+    public ResponseEntity<?> obtenerRespuestaPorAlumnoPorExamen(@PathVariable Long alumnoId, @PathVariable Long examenId,
+                                                                @RequestBody Iterable<Respuesta> respuestas) {
         Iterable<Respuesta> respuestasBD = service.findRespuestaByAlumnoByExamen(alumnoId, examenId);
 
         return ResponseEntity.ok(respuestasBD);
+    }
+
+    @GetMapping("/alumno/{alumnoId}/examenes-respondidos")
+    public ResponseEntity<?> obtenerExamanesIdsConRespuestasAlumno(@PathVariable Long alumnoId) {
+        Iterable<Long> examanesIds = service.findExamenesIdsConRespuestasByAlumno(alumnoId);
+        return ResponseEntity.ok(examanesIds);
     }
 }
