@@ -17,5 +17,6 @@
         <module>microservicios-examenes</module>
         <module>microservicio-respuestas</module>
         <module>microservicios-zuul</module>
+        <module>microservicios-gateway</module>
     </modules>
 </project>
