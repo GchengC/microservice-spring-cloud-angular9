@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author GchengC.
@@ -65,7 +66,22 @@ public class CursoController extends CommonController<Curso, CursoService> {
 
     @GetMapping("/alumno/{id}")
     public ResponseEntity<?> filtrar(@PathVariable Long id) {
-        return ResponseEntity.ok(service.findCursoByAlumnoId(id));
+        Curso curso = service.findCursoByAlumnoId(id);
+        if (Optional.ofNullable(curso).isPresent()) {
+            List<Long> examenesIds = (List<Long>) service.obtenerExamanesIdsConRespuestasAlumno(id);
+            List<Examen> examenes = curso.getExamenes()
+                    .stream()
+                    .map(ex -> {
+                        if (examenesIds.contains(ex.getId())) {
+                            ex.setRespondido(true);
+                        }
+                        return ex;
+                    })
+                    .collect(Collectors.toList());
+            curso.setExamenes(examenes);
+        }
+
+        return ResponseEntity.ok(curso);
     }
 
 
