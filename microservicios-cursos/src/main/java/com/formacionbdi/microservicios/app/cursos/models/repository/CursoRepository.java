@@ -14,7 +14,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 //public interface CursoRepository extends CrudRepository<Curso, Long> {
 public interface CursoRepository extends PagingAndSortingRepository<Curso, Long> {
-
-    @Query("SELECT c FROM Curso c JOIN FETCH c.alumnos a WHERE a.id = ?1")
+    //Cambia cuando son 2 BD y Alumnos se volvio Transient
+//    @Query("SELECT c FROM Curso c JOIN FETCH c.alumnos a WHERE a.id = ?1")
+    @Query("SELECT c FROM Curso c JOIN FETCH c.cursoAlumnos a WHERE a.alumnoId = ?1")
     public Curso findCursoByAlumnoId(Long id);
 }

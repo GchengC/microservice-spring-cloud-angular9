@@ -1,6 +1,7 @@
 package com.formacionbdi.microservicios.app.cursos.controllers;
 
 import com.formacionbdi.microservicios.app.cursos.models.entity.Curso;
+import com.formacionbdi.microservicios.app.cursos.models.entity.CursoAlumno;
 import com.formacionbdi.microservicios.app.cursos.services.CursoService;
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.controllers.CommonController;
@@ -62,7 +63,14 @@ public class CursoController extends CommonController<Curso, CursoService> {
             return ResponseEntity.notFound().build();
 
         Curso cursoDB = o.get();
-        alumnos.forEach(a -> cursoDB.addAlumno(a));
+//        la siguiente linea cambia dado a la nueva relacion transient de las 2 BD
+//        alumnos.forEach(a -> cursoDB.addAlumno(a));
+        alumnos.forEach(a -> {
+            CursoAlumno cursoAlumno = new CursoAlumno();
+            cursoAlumno.setAlumnoId(a.getId());
+            cursoAlumno.setCurso(cursoDB);
+            cursoDB.addCursoAlumno(cursoAlumno);
+        });
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(cursoDB));
     }
@@ -74,7 +82,11 @@ public class CursoController extends CommonController<Curso, CursoService> {
             return ResponseEntity.notFound().build();
 
         Curso cursoDB = o.get();
-        cursoDB.removeAlumno(alumno);
+//        la siguiente linea cambia dado a la nueva relacion transient de las 2 BD
+        CursoAlumno cursoAlumno = new CursoAlumno();
+        cursoAlumno.setAlumnoId(alumno.getId());
+        cursoDB.removeCursoAlumno(cursoAlumno);
+//        cursoDB.removeAlumno(alumno);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(cursoDB));
     }
