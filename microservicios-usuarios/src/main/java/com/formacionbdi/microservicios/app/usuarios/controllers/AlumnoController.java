@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,7 +27,7 @@ import java.util.Optional;
 public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
     @GetMapping("/alumnos-por-curso")
-    public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam Iterable<Long> ids) {
+    public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam List<Long> ids) {
         return ResponseEntity.ok(this.service.findAllById(ids));
     }
 

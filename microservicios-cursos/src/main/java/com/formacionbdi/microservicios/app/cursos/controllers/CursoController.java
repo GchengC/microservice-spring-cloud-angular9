@@ -7,6 +7,8 @@ import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.controllers.CommonController;
 import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -39,6 +41,20 @@ public class CursoController extends CommonController<Curso, CursoService> {
             });
             return c;
         }).collect(Collectors.toList());
+        return ResponseEntity.ok().body(cursos);
+    }
+
+    @GetMapping("/pagina")
+    @Override
+    public ResponseEntity<?> listar(Pageable pageable) {
+        Page<Curso> cursos = service.findAll(pageable).map(curso -> {
+            curso.getCursoAlumnos().forEach(a -> {
+                Alumno alumno = new Alumno();
+                alumno.setId(a.getId());
+                curso.addAlumno(alumno);
+            });
+            return curso;
+        });
         return ResponseEntity.ok().body(cursos);
     }
 
