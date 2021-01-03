@@ -25,6 +25,11 @@ import java.util.Optional;
 @RestController
 public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
+    @GetMapping("/alumnos-por-curso")
+    public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam Iterable<Long> ids) {
+        return ResponseEntity.ok(this.service.findAllById(ids));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> editar(@Valid @RequestBody Alumno alumno, BindingResult result, @PathVariable Long id) {
         if (result.hasErrors())
