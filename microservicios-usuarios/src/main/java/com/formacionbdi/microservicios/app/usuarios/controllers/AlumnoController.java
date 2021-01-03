@@ -26,6 +26,7 @@ import java.util.Optional;
 @RestController
 public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
+
     @GetMapping("/alumnos-por-curso")
     public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam List<Long> ids) {
         return ResponseEntity.ok(this.service.findAllById(ids));
