@@ -13,10 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -30,6 +27,20 @@ public class CursoController extends CommonController<Curso, CursoService> {
 
     @Value("${config.balanceador.test}")
     private String balanceadorTest;
+
+    @GetMapping
+    @Override
+    public ResponseEntity<?> listar() {
+        List<Curso> cursos = ((List<Curso>) service.findAll()).stream().map(c -> {
+            c.getCursoAlumnos().forEach(a -> {
+                Alumno alumno = new Alumno();
+                alumno.setId(a.getId());
+                c.addAlumno(alumno);
+            });
+            return c;
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok().body(cursos);
+    }
 
     @GetMapping("/balanceador-test")
     public ResponseEntity<?> balanceadorTest() {
