@@ -22,8 +22,13 @@ public class Respuesta {
     private Long id;
     private String texto;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    //    Al existir esta entidad en otra BD se tiene que elimnar de la relacion en MySql
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @Transient
     private Alumno alumno;
+
+    @Column(name = "alumno_id")
+    private Long alumnoId;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Pregunta pregunta;
