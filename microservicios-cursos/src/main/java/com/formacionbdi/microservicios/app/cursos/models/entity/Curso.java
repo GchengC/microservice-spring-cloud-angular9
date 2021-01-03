@@ -1,5 +1,6 @@
 package com.formacionbdi.microservicios.app.cursos.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import lombok.Data;
@@ -32,7 +33,13 @@ public class Curso {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createAt;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"curso"}, allowSetters = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CursoAlumno> cursoAlumnos;
+
+    //    Al existir esta entidad en otra BD se tiene que elimnar de la relacion en MySql
+//    @OneToMany(fetch = FetchType.LAZY)
+    @Transient
     private List<Alumno> alumnos;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -45,6 +52,8 @@ public class Curso {
 
     public Curso() {
         this.alumnos = new ArrayList<>();
+        this.examenes = new ArrayList<>();
+        this.cursoAlumnos = new ArrayList<>();
     }
 
     public void addAlumno(Alumno alumno) {
@@ -63,6 +72,13 @@ public class Curso {
         this.examenes.remove(examen);
     }
 
+    public void addCursoAlumno(CursoAlumno cursoAlumno) {
+        this.cursoAlumnos.add(cursoAlumno);
+    }
+
+    public void removeCursoAlumno(CursoAlumno cursoAlumno) {
+        this.cursoAlumnos.remove(cursoAlumno);
+    }
 
     @Override
     public boolean equals(Object o) {
