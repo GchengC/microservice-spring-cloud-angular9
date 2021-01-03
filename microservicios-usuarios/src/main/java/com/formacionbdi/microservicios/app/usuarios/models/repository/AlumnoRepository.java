@@ -16,6 +16,6 @@ import java.util.List;
 //public interface AlumnoRepository extends CrudRepository<Alumno, Long> { //Hasta el video 46 lo usamos, se cambia por tema de paginacion
 public interface AlumnoRepository extends PagingAndSortingRepository<Alumno, Long> {
 
-    @Query("SELECT a FROM Alumno a WHERE a.nombre LIKE %?1% OR a.apellido LIKE %?1%")
+    @Query("SELECT a FROM Alumno a WHERE upper(a.nombre)LIKE upper(concat('%',?1,'%')) OR upper(a.apellido) LIKE upper(concat('%',?1,'%'))")
     public List<Alumno> findByNombreOrApellido(String term);
 }
