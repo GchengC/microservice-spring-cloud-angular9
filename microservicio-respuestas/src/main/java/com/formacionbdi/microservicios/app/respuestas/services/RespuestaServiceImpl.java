@@ -7,7 +7,7 @@ import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 import com.formacionbdi.microservicios.commons.examenes.models.entity.Pregunta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,14 +27,18 @@ public class RespuestaServiceImpl implements RespuestaService {
     @Autowired
     ExamenFeingClient examenClient;
 
+    /**
+     * MongoDB no es transaccional asi que se quita esa etiqueta
+     */
+
     @Override
-    @Transactional
+//    @Transactional
     public Iterable<Respuesta> saveAll(Iterable<Respuesta> respuestas) {
         return repository.saveAll(respuestas);
     }
 
     @Override
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public Iterable<Respuesta> findRespuestaByAlumnoByExamen(Long alumnoId, Long examenId) {
 //        return repository.findRespuestaByAlumnoByExamen(alumnoId, examenId);
         Examen examen = examenClient.obtenerExamenPorId(examenId);
