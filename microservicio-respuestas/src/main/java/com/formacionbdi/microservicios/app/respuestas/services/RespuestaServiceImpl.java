@@ -1,5 +1,6 @@
 package com.formacionbdi.microservicios.app.respuestas.services;
 
+import com.formacionbdi.microservicios.app.respuestas.clients.ExamenFeingClient;
 import com.formacionbdi.microservicios.app.respuestas.models.entity.Respuesta;
 import com.formacionbdi.microservicios.app.respuestas.models.repository.RespuestaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class RespuestaServiceImpl implements RespuestaService {
 
     @Autowired
     RespuestaRepository repository;
+
+    @Autowired
+    ExamenFeingClient examenClient;
 
     @Override
     @Transactional
