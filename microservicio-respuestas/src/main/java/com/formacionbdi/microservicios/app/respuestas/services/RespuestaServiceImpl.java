@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,7 +60,13 @@ public class RespuestaServiceImpl implements RespuestaService {
     @Override
     public Iterable<Long> findExamenesIdsConRespuestasByAlumno(Long alumnoId) {
 //        return repository.findExamenesIdsConRespuestasByAlumno(alumnoId);
-        return null;
+        List<Respuesta> respuestasAlumno = (List<Respuesta>) repository.findAlumnoId(alumnoId);
+        List<Long> examenIds = Collections.emptyList();
+        if (respuestasAlumno.size() > 0) {
+            List<Long> preguntasIds = respuestasAlumno.stream().map(Respuesta::getPreguntaId).collect(Collectors.toList());
+            examenIds = examenClient.obtenerExamenesIdsPorPreguntasRespondidas(preguntasIds);
+        }
+        return examenIds;
     }
 
     @Override
