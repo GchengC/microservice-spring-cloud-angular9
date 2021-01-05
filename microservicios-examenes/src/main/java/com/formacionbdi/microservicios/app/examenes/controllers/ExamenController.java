@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class ExamenController extends CommonController<Examen, ExamenService> {
 
     @GetMapping("/respondidos-por-preguntas")
-    public ResponseEntity<?> obtenerExamenesIdsPorPreguntasRespondidas(@RequestParam Iterable<Long> preguntaIds) {
+    public ResponseEntity<?> obtenerExamenesIdsPorPreguntasRespondidas(@RequestParam List<Long> preguntaIds) {
         return ResponseEntity.ok().body(service.findExamenesIdsConRespuestasByPreguntaIds(preguntaIds));
 
     }
