@@ -1,6 +1,6 @@
 package com.formacionbdi.microservicios.app.respuestas.services;
 
-import com.formacionbdi.microservicios.app.respuestas.clients.ExamenFeingClient;
+//import com.formacionbdi.microservicios.app.respuestas.clients.ExamenFeingClient;
 import com.formacionbdi.microservicios.app.respuestas.models.entity.Respuesta;
 import com.formacionbdi.microservicios.app.respuestas.models.repository.RespuestaRepository;
 //import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,8 +25,8 @@ public class RespuestaServiceImpl implements RespuestaService {
     @Autowired
     RespuestaRepository repository;
 
-    @Autowired
-    ExamenFeingClient examenClient;
+//    @Autowired
+//    ExamenFeingClient examenClient;
 
     /**
      * MongoDB no es transaccional asi que se quita esa etiqueta
