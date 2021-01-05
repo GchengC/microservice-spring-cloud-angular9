@@ -26,7 +26,7 @@ public interface RespuestaRepository extends MongoRepository<Respuesta, Long> {
     @Query("{'alumnoId': ?0, 'preguntaId': {$in: ?1}}")
     public Iterable<Respuesta> findRespuestaByAlumnoByPreguntaIds(Long alumnoId, Iterable<Long> preguntaIds);
 
-    @Query
-    public Iterable<Long> findExamenesIdsConRespuestasByAlumno(Long alumnoId);
+    @Query("{'alumnoId': ?0}")
+    public Iterable<Respuesta> findAlumnoId(Long alumnoId);
 
 }
