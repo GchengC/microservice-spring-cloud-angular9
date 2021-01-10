@@ -19,6 +19,7 @@ import java.util.Optional;
  * @IDE IntelliJ IDEA
  * @since nov. 2020.
  **/
+//@CrossOrigin({"http://localhost:4200"})
 public class CommonController<E, S extends CommonService<E>> {
 
     @Autowired
