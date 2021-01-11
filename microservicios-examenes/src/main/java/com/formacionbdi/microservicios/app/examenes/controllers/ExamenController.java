@@ -41,6 +41,8 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
 
         Examen examenDb = o.get();
         examenDb.setNombre(examen.getNombre());
+        examenDb.setAsignaturaHija(examen.getAsignaturaHija());
+        examenDb.setAsignaturaPadre(examen.getAsignaturaPadre());
 
 //        examenDB.getPreguntas()
 //                .stream()
