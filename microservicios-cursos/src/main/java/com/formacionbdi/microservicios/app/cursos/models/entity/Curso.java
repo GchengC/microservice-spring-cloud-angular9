@@ -80,13 +80,4 @@ public class Curso {
         this.cursoAlumnos.remove(cursoAlumno);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-        if (!(o instanceof Examen)) return false;
-        Examen examen = (Examen) o;
-        return this.id != null && this.id.equals(examen.getId());
-    }
-
 }

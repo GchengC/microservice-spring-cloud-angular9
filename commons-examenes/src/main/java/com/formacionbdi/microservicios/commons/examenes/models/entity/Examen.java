@@ -82,8 +82,8 @@ public class Examen {
     public boolean equals(Object o) {
         if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
-        if (!(o instanceof Pregunta)) return false;
-        Pregunta pregunta = (Pregunta) o;
-        return this.id != null && this.id.equals(pregunta.getId());
+        if (!(o instanceof Examen)) return false;
+        Examen examen = (Examen) o;
+        return this.id != null && this.id.equals(examen.getId());
     }
 }
